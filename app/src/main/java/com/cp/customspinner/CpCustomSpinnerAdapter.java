@@ -2,6 +2,7 @@ package com.cp.customspinner;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
     private boolean setFirstItemColor;
     private int selectedItemBackgroundColor;
     private int normalItemBackgroundColor;
+    private int normalItemTextColor;
+    private int selectedItemTextColor;
+    private int itemTextSizeSp;
 
     public CpCustomSpinnerAdapter(Context context) {
         this.mContext = context;
@@ -59,6 +63,7 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
             holder.tvName.setText(bean.getName());
             holder.tvName.setTextColor(getTextColor(position));
             holder.tvName.setBackgroundColor(getBackgroundColor(position));
+            holder.tvName.setTextSize(TypedValue.COMPLEX_UNIT_SP,itemTextSizeSp == 0 ? 14 : itemTextSizeSp);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,11 +74,11 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
     }
     private int getTextColor(int position) {
         if (setFirstItemColor && position == selectedPosition)
-            return  ContextCompat.getColor(mContext, R.color.colorAccent);
+            return  ContextCompat.getColor(mContext, selectedItemTextColor == 0 ? R.color.colorPrimary : selectedItemTextColor);
         else if ((!setFirstItemColor) && position == selectedPosition && position > 0)
-            return ContextCompat.getColor(mContext, R.color.colorAccent);
+            return ContextCompat.getColor(mContext, selectedItemTextColor == 0 ? R.color.colorPrimary : selectedItemTextColor);
         else
-            return  ContextCompat.getColor(mContext, android.R.color.black);
+            return  ContextCompat.getColor(mContext, normalItemTextColor == 0 ? android.R.color.black : normalItemTextColor);
     }
 
     private int getBackgroundColor(int position) {
@@ -111,6 +116,22 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
         this.normalItemBackgroundColor =  normalItemBackgroundColor;
         notifyDataSetChanged();
     }
+
+    public void setSelectedItemTextColor(int selectedItemTextColor) {
+        this.selectedItemTextColor = selectedItemTextColor;
+        notifyDataSetChanged();
+    }
+
+    public void setNormalItemTextColor(int normalItemTextColor) {
+        this.normalItemTextColor = normalItemTextColor;
+        notifyDataSetChanged();
+    }
+
+    public void setItemTextSizeSp(int itemTextSizeSp) {
+        this.itemTextSizeSp = itemTextSizeSp;
+        notifyDataSetChanged();
+    }
+
     private class viewHolder {
         private TextView tvName;
     }

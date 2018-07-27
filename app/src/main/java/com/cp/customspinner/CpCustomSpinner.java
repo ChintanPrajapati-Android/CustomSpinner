@@ -68,6 +68,15 @@ public class CpCustomSpinner extends AppCompatSpinner implements  AdapterView.On
         adapter.setNormalItemBackgroundColor(color);
     }
 
+    protected void setSelectedItemTextColor(int color){
+        adapter.setSelectedItemTextColor(color);
+    }
+    protected void setNormalItemTextColor(int color){
+        adapter.setNormalItemTextColor(color);
+    }
+    protected void setItemTextSizeSp(int size){
+        adapter.setItemTextSizeSp(size);
+    }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedPosition =  this.getSelectedItemPosition();

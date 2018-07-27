@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         spDemo.isFirstItemColor(false);
         spDemo.setSelectedItemBackgroundColor(R.color.colorPrimary);
         spDemo.setNormalItemBackgroundColor(android.R.color.darker_gray);
+        spDemo.setItemTextSizeSp(14);
+        spDemo.setNormalItemTextColor(R.color.colorPrimary);
+        spDemo.setSelectedItemTextColor(R.color.colorAccent);
     }
 }
 
