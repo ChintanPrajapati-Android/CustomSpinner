@@ -2,6 +2,7 @@ package com.cp.customspinner;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 
 import com.cp.customspinner.adapter.R;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
         ArrayList<SpinnerBean> beans =  new ArrayList<>();
         for (int i = 0; i < 20 ; i++) {
             beans.add(new SpinnerBean(i,("Game :" + i)));
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         spDemo.setItemTextSizeSp(14);
         spDemo.setNormalItemTextColor(R.color.colorPrimary);
         spDemo.setSelectedItemTextColor(R.color.colorAccent);
+
     }
 }
 

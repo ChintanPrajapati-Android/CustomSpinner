@@ -14,7 +14,7 @@ import com.cp.customspinner.adapter.R;
 
 import java.util.ArrayList;
 
-public class CpCustomSpinnerAdapter extends BaseAdapter {
+public class CpCustomSpinnerAdapter  extends BaseAdapter {
     private Context mContext;
     private ArrayList<SpinnerBean> alData;
     private int selectedPosition = -1;
@@ -60,6 +60,7 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
                 holder = (viewHolder) view.getTag();
             }
             SpinnerBean bean = alData.get(position);
+
             holder.tvName.setText(bean.getName());
             holder.tvName.setTextColor(getTextColor(position));
             holder.tvName.setBackgroundColor(getBackgroundColor(position));
@@ -131,6 +132,8 @@ public class CpCustomSpinnerAdapter extends BaseAdapter {
         this.itemTextSizeSp = itemTextSizeSp;
         notifyDataSetChanged();
     }
+
+
 
     private class viewHolder {
         private TextView tvName;
